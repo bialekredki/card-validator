@@ -3,18 +3,17 @@ package common
 import "testing"
 
 type getNthDigitTest struct {
-	given string
-	n int
+	given    string
+	n        int
 	expected int
 }
 
-var getNthDigitTests = []getNthDigitTest {
+var getNthDigitTests = []getNthDigitTest{
 	{"123456789", 0, 1},
-	{"123456789", 1, 2,},
+	{"123456789", 1, 2},
 	{"123456789", 8, 9},
 	{"1", 0, 1},
 }
-
 
 func TestGetNthDigit(t *testing.T) {
 	for _, test := range getNthDigitTests {
@@ -25,7 +24,6 @@ func TestGetNthDigit(t *testing.T) {
 	}
 }
 
-
 func TestGetNthDigitError(t *testing.T) {
 	if _, err := getNthDigit("123", 5); err == nil {
 		t.Fail()
@@ -33,5 +31,5 @@ func TestGetNthDigitError(t *testing.T) {
 	if _, err := getNthDigit("abcef", 1); err == nil {
 		t.Fail()
 	}
-	
+
 }
