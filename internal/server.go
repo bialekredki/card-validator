@@ -68,7 +68,12 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 	writer.Write(response)
 }
 
+func healthcheckHandler(writer http.ResponseWriter, _ *http.Request) {
+	writer.Write([]byte("Alive"))
+}
+
 func Serve(port uint16) {
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/alive", healthcheckHandler)
 	http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 }
